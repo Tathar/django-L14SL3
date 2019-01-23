@@ -102,3 +102,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+<<<<<<< HEAD
+/.project
+/.pydevproject
+/virtenv/
+=======
+>>>>>>> branch 'master' of git@github.com:Tathar/django-L14SL3.git

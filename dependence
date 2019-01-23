@@ -1,0 +1,7 @@
+python3
+django
+django_sitetree
+django_widget_tweaks
+django-formset-js
+
+pip install django django_sitetree django_widget_tweaks django-formset-js
