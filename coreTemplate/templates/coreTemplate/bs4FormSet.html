@@ -8,7 +8,7 @@
 
 <div data-formset-body>
 	{% for form in formset %}
-		{% include "core/bs4LoopFormSet.html" with form=form only %}
+		{% include "coreTemplate/bs4LoopFormSet.html" with form=form only %}
 	{% endfor %}
 </div>
 
@@ -27,7 +27,7 @@
     any scripts -->
     <script type="form-template" data-formset-empty-form>
             {% escapescript %}
-                {% include "core/bs4LoopFormSet.html" with form=formset.empty_form only %}
+                {% include "coreTemplate/bs4LoopFormSet.html" with form=formset.empty_form only %}
             {% endescapescript %}
     </script>
 </div>

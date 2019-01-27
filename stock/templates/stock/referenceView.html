@@ -1,0 +1,146 @@
+{% extends "coreTemplate/base_left_context_menu.html" %}
+
+{% load model_tag %}
+
+{% block container %}
+{% if object %}
+<section class="widget shadow-01 mb-4" id="widget-01">
+	<div class="widget-block">
+	<header>
+	    <h3>{{ _("Reference") }}</h3>
+	</header>
+	<div class="widget-content pt-3">
+		<div>
+			<h5>{% field_name object "PN"%}</h5>
+		</div>
+		<div >
+			{{ object.PN }}
+		</div>
+	</div>
+	
+	<div class="widget-content pt-3">
+		<div >
+			<h5>{% field_name object "Name"%}</h5>
+		</div>
+		<div >
+			{{ object.Name }}
+		</div>
+	</div>
+	
+	<div class="widget-content pt-3">
+		<div>
+			<h5>{% field_name object "Description"%}</h5>
+		</div>
+		<div>
+			{{ object.Description }}
+		</div>
+	</div>
+	
+	<div class="widget-content pt-3">
+		<div>
+			<h5>{% field_name object "Position"%}</h5>
+		</div>
+		<div>
+			{{ object.Position }}
+		</div>
+	</div>
+	
+	<div class="widget-content pt-3">
+		<div>
+			<h5>{% field_name object "StockQt"%}</h5>
+		</div>
+		<div>
+			{{ object.StockQt }}
+		</div>
+	</div>
+	
+	<div class="widget-content pt-3">
+		<div>
+			<h5>{% field_name object "Already_used"%}</h5>
+		</div>
+		<div>
+			{{ object.Already_used }}
+		</div>
+	</div>
+	
+	<div class="widget-content pt-3">
+		<div>
+			<h5>{% field_name object "Next_needed"%}</h5>
+		</div>
+		<div>
+			{{ object.Next_needed }}
+		</div>
+	</div>
+</div>
+</section>
+
+<section class="widget shadow-01 mb-4" id="widget-01">
+	<div class="widget-block">
+		<header>
+	   	 	<h3>{{ _("Output Stock") }}</h3>
+		</header>
+		<div class="widget-content pt-3">
+				<div>
+					<h5>{% field_name OutputStocks.first "Date"%}</h5>
+				</div>
+			{% for OutputStock in OutputStocks %}
+				<div>
+					{{ OutputStock.Date }}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+
+
+<section class="widget shadow-01 mb-4" id="widget-01">
+	<div class="widget-block">
+		<header>
+	   	 	<h3>{{ _("Manufacturers") }}</h3>
+		</header>
+		<div class="widget-content pt-3">
+			{% for Article in Articles %}
+				<div class="widget-content pt-3">
+				<div>
+					<h5>{% field_name Article.article "Manufacturer"%}</h5>
+				</div>
+				<div>
+					{{ Article.article.Manufacturer }}
+				</div>
+				</div>
+				<div class="widget-content pt-3">
+				<div>
+					<h5>{% field_name Article.article "Ref"%}</h5>
+				</div>
+				<div>
+					{{ Article.article.Ref }}
+				</div>
+				</div>
+				{% for Suplier in Article.supliers %}
+				<div class="widget-content pt-3">
+				<div>
+					<h5>{% field_name Suplier "Name"%}</h5>
+				</div>
+				<div>
+					{{ Suplier.Name }}
+				</div>
+				</div>
+				<div class="widget-content pt-3">
+				<div>
+					<h5>{% field_name Suplier "Ref"%}</h5>
+				</div>
+				<div>
+					{{ Suplier.Ref }}
+				</div>
+				</div>
+				
+				{% endfor %}
+			{% endfor %}
+		</div>
+	</div>
+</section>
+    
+{% else %}
+    <p>{{ _("No Article referanced") }}</p>
+{% endif %}
+{% endblock %}

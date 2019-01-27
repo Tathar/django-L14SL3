@@ -22,7 +22,7 @@
 			<span class="d-none d-lg-inline">{{ item.title_resolved }}</span>
 		</a>
     	<ul id="navid{{ item.id }}" class="nav flex-column bg-dark collapse {% if item.is_current or item.in_current_branch %}show{% endif %}" data-parent="#sidebarNav">
-     		{% sitetree_children of item for menu template "core/left_menu_L2.html" %}
+     		{% sitetree_children of item for menu template "coreTemplate/left_menu_L2.html" %}
 		</ul>
 	</li>
 

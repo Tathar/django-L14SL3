@@ -4,13 +4,13 @@ from . import views
 
 app_name = 'stock'
 urlpatterns = [
-#     path('', views.IndexView.as_view(), name='index'),
+     path('', views.IndexView.as_view(), name='index'),
 # #    path('addserver/', views.add_MailServer, name='addserver'),
 # #    path('addserver/', views.EditServerView.as_view(), name='addserver'),
 #     path('addserver/', views.NewServerView.as_view(), name='addserver'),
 #     path('<int:usermail_pk>/edit/', views.EditServerView.as_view(), name='editserver'),
-#     path('<int:usermail_pk>/', views.MyDetailView.as_view(), name='detail'),
-#     path('<int:usermail_pk>/detail/', views.MyDetailView.as_view(), name='detail'),
+#     path('<int:reference_pk>/', views.ReferenceView.as_view(), name='detailRef'),
+     path('<int:reference_pk>/detail/', views.ReferenceView.as_view(), name='detailRef'),
 #     path('<int:usermail_pk>/remmail/', views.RemoveMail.as_view(), name='remmail'),
 #     path('<int:usermail_pk>/checkspam/', views.CheckSpam.as_view(), name='checkspam'),
 #     path('<int:usermail_pk>/unsubscribe/', views.Unsubscribe.as_view(), name='unsubscribe'),
@@ -25,14 +25,14 @@ register_dynamic_trees(
   
     # or even define a tree right at the process of registration.
     compose_dynamic_tree((
-        tree("maintree", title='A bas le SPAM !', items=(
-            item('Home', 'mail:index', url_as_pattern=True, children=(
-                item('Add Server', 'mail:addserver'),
-                item('Mail Detail', 'mail:detail mailtask.pk', url_as_pattern=True, in_menu=False, children=(
-                    item('Check all spam', 'mail:checkspam mailtask.pk', url_as_pattern=True),
-                    item('Unsubscribe', 'mail:unsubscribe mailtask.pk', in_menu=False, url_as_pattern=True),
-                    item('Edit Mail Server', 'mail:editserver mailtask.pk', url_as_pattern=True),
-                    item(' Remove Mail Address', 'mail:remmail usermail.pk', url_as_pattern=True)
+        tree("maintree", title='L14SL3', items=(
+            item('Home', 'stock:index', url_as_pattern=True, children=(
+                item('Add Server', 'stock:addserver'),
+                item('Reference Detail', 'stock:detailRef reference.pk', url_as_pattern=True, in_menu=False, children=(
+                    item('Check all spam', 'stock:checkspam mailtask.pk', url_as_pattern=True),
+                    item('Unsubscribe', 'stock:unsubscribe mailtask.pk', in_menu=False, url_as_pattern=True),
+                    item('Edit Mail Server', 'stock:editserver mailtask.pk', url_as_pattern=True),
+                    item(' Remove Mail Address', 'stock:remmail usermail.pk', url_as_pattern=True)
                 )),
             )),
         )),

@@ -1,4 +1,4 @@
-{% extends "core/base.html" %}
+{% extends "coreTemplate/base.html" %}
 {% load sitetree %}
 
 {% block left-menu %}
@@ -8,7 +8,7 @@
           </div>
           <ul id="sidebarNav" class="nav nav-dark flex-column">
           
-          	{% sitetree_menu from "maintree" include "trunk,topmenu" template "core/left_menu_L1.html" %}
+          	{% sitetree_menu from "maintree" include "trunk,topmenu" template "coreTemplate/left_menu_L1.html" %}
 
           </ul>
 {% endblock %}
