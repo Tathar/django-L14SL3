@@ -10,7 +10,7 @@ urlpatterns = [
 #     path('addserver/', views.NewServerView.as_view(), name='addserver'),
 #     path('<int:usermail_pk>/edit/', views.EditServerView.as_view(), name='editserver'),
 #     path('<int:reference_pk>/', views.ReferenceView.as_view(), name='detailRef'),
-     path('<int:reference_pk>/detail/', views.ReferenceView.as_view(), name='detailRef'),
+     path('<int:piece_pk>/detail/', views.PiecesView.as_view(), name='detailPiece'),
 #     path('<int:usermail_pk>/remmail/', views.RemoveMail.as_view(), name='remmail'),
 #     path('<int:usermail_pk>/checkspam/', views.CheckSpam.as_view(), name='checkspam'),
 #     path('<int:usermail_pk>/unsubscribe/', views.Unsubscribe.as_view(), name='unsubscribe'),
@@ -28,7 +28,7 @@ register_dynamic_trees(
         tree("maintree", title='L14SL3', items=(
             item('Home', 'stock:index', url_as_pattern=True, children=(
                 item('Add Server', 'stock:addserver'),
-                item('Reference Detail', 'stock:detailRef reference.pk', url_as_pattern=True, in_menu=False, children=(
+                item('Piece Detail', 'stock:detailPiece piece.pk', url_as_pattern=True, in_menu=False, children=(
                     item('Check all spam', 'stock:checkspam mailtask.pk', url_as_pattern=True),
                     item('Unsubscribe', 'stock:unsubscribe mailtask.pk', in_menu=False, url_as_pattern=True),
                     item('Edit Mail Server', 'stock:editserver mailtask.pk', url_as_pattern=True),
@@ -42,3 +42,7 @@ register_dynamic_trees(
     # dynamic trees are rendered immediately.
     reset_cache=True
 )
+"""
+from django.contrib.auth.models import User
+user = User.objects.create_superuser('admin', '', 'admin')
+"""

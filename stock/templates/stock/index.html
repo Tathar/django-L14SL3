@@ -11,10 +11,10 @@
 	</header>
 <table id=tableSpam class="table table-bordered table-striped table-sm">
 <thead>
-	<tr><th>{% field_name object_list.first "PN"%}</th><th>{% field_name object_list.first "Name"%}</th><th>{% field_name object_list.first "StockQt" %}</th><th>{% field_name object_list.first "Next_needed" %} </th></tr>
+	<tr><th>{% field_name object_list.first.reference_set.first "PN"%}</th><th>{% field_name object_list.first "Name"%}</th><th>{% field_name object_list.first "StockQt" %}</th><th>{% field_name object_list.first "Next_needed" %} </th></tr>
 </thead>
     {% for object in object_list %}
-    <tr><td><a href="{% url 'stock:detailRef' object.pk %}" >{{ object.PN }}</a></td><td>{{ object.Name }}</td><td>{{ object.StockQt }}</td><td>{{ object.Next_needed }}</td></tr>
+    <tr><td><a href="{% url 'stock:detailPiece' object.pk %}" >{{ object.reference_set.first.PN }}</a></td><td>{{ object.Name }}</td><td>{{ object.StockQt }}</td><td>{{ object.Next_needed }}</td></tr>
     {% endfor %}
 
 </table>

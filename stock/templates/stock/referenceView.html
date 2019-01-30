@@ -4,19 +4,29 @@
 
 {% block container %}
 {% if object %}
+
+<section class="widget shadow-01 mb-4" id="widget-01">
+	<div class="widget-block">
+		<header>
+	   	 	<h3>{{ _("Reference") }}</h3>
+		</header>
+		<div class="widget-content pt-3">
+			<div>
+				{% for Reference in References %}
+				<div >
+					{{ Reference.PN }}
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</section>
+
 <section class="widget shadow-01 mb-4" id="widget-01">
 	<div class="widget-block">
 	<header>
-	    <h3>{{ _("Reference") }}</h3>
+	    <h3>{{ _("Piece") }}</h3>
 	</header>
-	<div class="widget-content pt-3">
-		<div>
-			<h5>{% field_name object "PN"%}</h5>
-		</div>
-		<div >
-			{{ object.PN }}
-		</div>
-	</div>
 	
 	<div class="widget-content pt-3">
 		<div >
@@ -74,6 +84,7 @@
 </div>
 </section>
 
+
 <section class="widget shadow-01 mb-4" id="widget-01">
 	<div class="widget-block">
 		<header>
@@ -81,7 +92,7 @@
 		</header>
 		<div class="widget-content pt-3">
 				<div>
-					<h5>{% field_name OutputStocks.first "Date"%}</h5>
+					<h5>{% field_name OutputStocks "Date"%}</h5>
 				</div>
 			{% for OutputStock in OutputStocks %}
 				<div>
