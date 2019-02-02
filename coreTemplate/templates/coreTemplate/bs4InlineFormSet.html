@@ -1,14 +1,21 @@
 {% load widget_tweaks %}
 {% load formset_tags %}
 
-<div id="formset" data-formset-prefix="{{ formset.prefix }}">
-{{ formset.management_form }}
 
+{% if view is not True %}
+<div id="formset" data-formset-prefix="{{ formset.prefix }}">
+{% endif %}
+
+{% with	label_class="col-xs-12 col-sm-4 col-md-2 col-lg-2 col-form-label" 	input_class="col-xs-12 col-sm-8 col-md-4 col-lg-2" %}  
+
+{{ formset.management_form }}
 
 
 <div data-formset-body>
 	{% for form in formset %}
-		{% include "coreTemplate/bs4LoopFormSet.html" with form=form view=view only  %}
+	<div class="form-group">
+		{% include "coreTemplate/bs4LoopInlineFormSet.html" with form=form view=view label_class=label_class input_class=input_class only  %}
+	</div>
 	{% endfor %}
 </div>
 
@@ -25,14 +32,18 @@
 <!-- The empty form template. By wrapping this in a <script> tag, the
     __prefix__ placeholder can easily be replaced in both attributes and
     any scripts -->
+    {% if view is not True %}
     <script type="form-template" data-formset-empty-form>
             {% escapescript %}
-                {% include "coreTemplate/bs4LoopFormSet.html" with form=formset.empty_form view=view only %}
+				<div class="form-group">
+                	{% include "coreTemplate/bs4LoopInlineFormSet.html" with form=formset.empty_form view=view label_class=label_class input_class=input_class only %}
+				</div>
             {% endescapescript %}
     </script>
 </div>
+{% endif %}
 
-
+{% endwith %}
 
 <!-- This button will add a new form when clicked -->
 

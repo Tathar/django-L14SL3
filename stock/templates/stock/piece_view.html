@@ -1,0 +1,79 @@
+{% extends "coreTemplate/base_left_context_menu.html" %}
+
+{% load sitetree %}
+
+{% block container %}
+
+<section class="widget shadow-01 mb-4" id="widget-01">
+	<div class="widget-block">
+		<header>
+	   	 	<h3>{{ _("Reference") }}</h3>
+		</header>
+		<div class="widget-content pt-3">
+			{% include 'coreTemplate/bs4InlineFormSet.html' with formset=Referances view=True only %}	
+		</div>
+		<footer>
+		<a href="{% url 'stock:PieceRef' piece.pk %}" >
+      		<button type="button" class="btn btn-info">{{ _("Edit") }} </button>
+   		</a>  
+		</footer>
+	</div>
+</section>
+
+
+<section class="widget shadow-01 mb-4" id="widget-01">
+	<div class="widget-block">
+		<header>
+			<h3>{{ _("Piece") }}</h3>
+		</header>
+		<div class="widget-content pt-3">
+  			{% include 'coreTemplate/bs4InlineForm.html' with form=form view=True %}
+		</div>
+		<footer>
+		<a href="{% url 'stock:PieceEdit' piece.pk %}" >
+      		<button type="button" class="btn btn-info">{{ _("Edit") }} </button>
+   		</a>
+		<a href="{% url 'stock:PieceUse' piece.pk %}" >
+      		<button type="button" class="btn btn-primary">{{ _("Use") }} </button>
+   		</a>
+		</footer>
+	</div>
+</section>
+
+<section class="widget shadow-01 mb-4" id="widget-01">
+	<div class="widget-block">
+		<header>
+	   	 	<h3>{{ _("Output Stock") }}</h3>
+		</header>
+		<div class="widget-content pt-3">
+  			{% include 'coreTemplate/bs4InlineFormSet.html' with formset=OutputStocks view=True only %}	
+		</div>
+		<footer>
+		<a href="{% url 'stock:PieceOutput' piece.pk %}" >
+      		<button type="button" class="btn btn-info">{{ _("Edit") }} </button>
+   		</a>  
+		</footer>
+	</div>
+</section>
+
+<section class="widget shadow-01 mb-4" id="widget-01">
+	<div class="widget-block">
+		<header>
+	   	 	<h3>{{ _("Supliers") }}</h3>
+		</header>
+		<div class="widget-content pt-3">
+  			{% include 'coreTemplate/bs4InlineFormSet.html' with formset=Supliers view=True only %}	
+		</div>
+		<footer>
+		<a href="{% url 'stock:PieceSuplier' piece.pk %}" >
+      		<button type="button" class="btn btn-info">{{ _("Edit") }} </button>
+   		</a>  
+		</footer>
+	</div>
+	
+</section>
+
+
+{% endblock %}
+
+

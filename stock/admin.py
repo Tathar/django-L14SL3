@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Reference, OutputStock, Article, Suplier, Piece
+from .models import Reference, OutputStock, Suplier, Piece
 
 
 
@@ -22,25 +22,15 @@ class SuplierAdmin(admin.TabularInline):
 class Suplier2Admin(admin.ModelAdmin):
     model = Suplier
 
-class ArticleAdmin(admin.TabularInline):
-    model = Article
-    inlines = [
-        SuplierAdmin,
-    ]
-    
-class Article2Admin(admin.ModelAdmin):
-    model = Article
-
 class PieceAdmin(admin.ModelAdmin):
     model = Piece
     inlines = [
         ReferenceAdmin,
         OutputStockAdmin,
-        ArticleAdmin,
+        SuplierAdmin,
     ]
 
 admin.site.register(Piece, PieceAdmin)
 admin.site.register(Reference, Reference2Admin)
 admin.site.register(OutputStock, OutputStock2Admin)
 admin.site.register(Suplier, Suplier2Admin)
-admin.site.register(Article, Article2Admin)

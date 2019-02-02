@@ -10,8 +10,13 @@ urlpatterns = [
 #     path('addserver/', views.NewServerView.as_view(), name='addserver'),
 #     path('<int:usermail_pk>/edit/', views.EditServerView.as_view(), name='editserver'),
 #     path('<int:reference_pk>/', views.ReferenceView.as_view(), name='detailRef'),
-     path('<int:piece_pk>/detail/', views.PiecesView.as_view(), name='detailPiece'),
-#     path('<int:usermail_pk>/remmail/', views.RemoveMail.as_view(), name='remmail'),
+#     path('<int:piece_pk>/detail/', views.PiecesView.as_view(), name='detailPiece'),
+     path('<int:piece_pk>/detail/', views.PieceView.as_view(), name='PieceView'),
+     path('<int:piece_pk>/detail/reference/', views.PieceRef.as_view(), name='PieceRef'),
+     path('<int:piece_pk>/detail/piece/', views.PieceEdit.as_view(), name='PieceEdit'),
+     path('<int:piece_pk>/detail/output/', views.PieceOutput.as_view(), name='PieceOutput'),
+     path('<int:piece_pk>/detail/supliers/', views.PieceSuplier.as_view(), name='PieceSuplier'),
+     path('<int:piece_pk>/use/', views.PieceUse.as_view(), name='PieceUse'),
 #     path('<int:usermail_pk>/checkspam/', views.CheckSpam.as_view(), name='checkspam'),
 #     path('<int:usermail_pk>/unsubscribe/', views.Unsubscribe.as_view(), name='unsubscribe'),
 ]
@@ -28,11 +33,12 @@ register_dynamic_trees(
         tree("maintree", title='L14SL3', items=(
             item('Home', 'stock:index', url_as_pattern=True, children=(
                 item('Add Server', 'stock:addserver'),
-                item('Piece Detail', 'stock:detailPiece piece.pk', url_as_pattern=True, in_menu=False, children=(
-                    item('Check all spam', 'stock:checkspam mailtask.pk', url_as_pattern=True),
-                    item('Unsubscribe', 'stock:unsubscribe mailtask.pk', in_menu=False, url_as_pattern=True),
-                    item('Edit Mail Server', 'stock:editserver mailtask.pk', url_as_pattern=True),
-                    item(' Remove Mail Address', 'stock:remmail usermail.pk', url_as_pattern=True)
+                item('Piece Detail', 'stock:PieceView piece.pk', url_as_pattern=True, in_menu=False, children=(
+                    item('Edit Reference', 'stock:PieceRef piece.pk', url_as_pattern=True),
+                    item('Edit Piece', 'stock:PieceEdit piece.pk', url_as_pattern=True),
+                    item('Edit Output Stock', 'stock:PieceOutput piece.pk', url_as_pattern=True),
+                    item('Edit Supliers', 'stock:PieceSuplier piece.pk', url_as_pattern=True),
+                    item('Use Piece', 'stock:PieceUse piece.pk', url_as_pattern=True),
                 )),
             )),
         )),

@@ -1,0 +1,31 @@
+{% extends "coreTemplate/base_left_context_menu.html" %}
+
+{% load sitetree %}
+
+{% block container %}
+
+<form method="post" action="">
+{% csrf_token %}
+
+<section class="widget shadow-01 mb-4" id="widget-01">
+	<div class="widget-block">
+	<header>
+	    <h3>{{ _("Piece") }}</h3>
+	</header>
+	<div class="widget-content pt-3">
+  				{% include 'coreTemplate/bs4InlineForm.html' with form=form %}
+	</div>
+	<footer>
+	<button type="submit" class="btn btn-primary">{{ _("Valid") }}</button>
+	
+	<a href="{% url 'stock:PieceView' piece.pk %}" >
+      	<button type="button" class="btn btn-danger">{{ _("Cancel") }} </button>
+   	</a>  
+	</footer>
+	</div>
+</section>
+
+</form>
+
+
+{% endblock %}

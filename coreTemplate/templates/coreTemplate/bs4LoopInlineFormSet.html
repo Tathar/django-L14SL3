@@ -13,18 +13,18 @@
 	    {% endfor %}
 	  </div>
 	{% endif %}
-	
+	<div class="row container-fluid"">
 	{% for field in form.visible_fields %}
 		{% if "-DELETE" in field.id_for_label  %}
-			{% render_field field style="display: none" %}
+			{% render_field field style+="display: none" %}
 		{% else %}
-		  <div class="form-group">
-		    {{ field.label_tag }}
+    		<label for="{{field.id_for_label}}" class="{{ label_class}}" data-toggle="tooltip" title="{{ field.help_text }}" >{{ field.label }}:</label>
+			<div class="{{input_class}}" data-toggle="tooltip" title="{{ field.help_text }}">
 		
 		    {% if form.is_bound %}
 		      {% if field.errors %}
 		      	<div class="input-group">
-		        {% render_field field class="form-control is-invalid" %}
+		        {% render_field field class+="form-control is-invalid" %}
             	<div class="input-group-append">
                 	<button type="button" class="btn btn-danger" data-formset-delete-button >-</button>
            		</div>
@@ -36,7 +36,7 @@
 		        {% endfor %}
 		      {% else %}
 		      	<div class="input-group">
-		        {% render_field field class="form-control is-valid" %}
+		        {% render_field field class+="form-control is-valid" %}
             	<div class="input-group-append">
                 	<button type="button" class="btn btn-danger" data-formset-delete-button >-</button>
            		</div>
@@ -47,19 +47,16 @@
 		      	{% if view is True %}
 		      		{% render_field field readonly="" class="form-control-plaintext" %}
            		{% else %}
-		      		{% render_field field class="form-control" %}
+		      		{% render_field field class+="form-control" %}
             		<div class="input-group-append">
                 		<button type="button" class="btn btn-danger" data-formset-delete-button >-</button>
            			</div>
            		{% endif %}
             	</div>
 		    {% endif %}
-		
-		    {% if field.help_text %}
-		      <small class="form-text text-muted">{{ field.help_text }}</small>
-		    {% endif %}
-		</div>
-		{% endif %}
 
+			</div>
+		{% endif %}
 	{% endfor %}
+	</div>
 </div>

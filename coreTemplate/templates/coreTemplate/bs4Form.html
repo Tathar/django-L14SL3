@@ -28,7 +28,11 @@
         {% render_field field class="form-control is-valid" %}
       {% endif %}
     {% else %}
-      {% render_field field class="form-control" %}
+      {% if view == True %}
+		{% render_field field readonly="" class="form-control-plaintext" %}
+      {% else %}
+      	{% render_field field class="form-control" %}
+      {% endif %}
     {% endif %}
 
     {% if field.help_text %}
@@ -36,3 +40,7 @@
     {% endif %}
   </div>
 {% endfor %}
+
+{% if submit_btn %}
+  	<button type="submit" class="btn btn-primary">{{ submit_btn }}</button>
+{% endif %}
